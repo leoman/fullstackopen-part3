@@ -10,9 +10,9 @@ const name = process.argv[3]
 const number = process.argv[4]
 
 const url =
-  `mongodb+srv://fullstackopen:${password}@cluster0-lu1eo.mongodb.net/phonebook-app?retryWrites=true&w=majority`;
+  `mongodb+srv://fullstackopen:${password}@cluster0-lu1eo.mongodb.net/phonebook-app?retryWrites=true&w=majority`
 
-  mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const personSchema = new mongoose.Schema({
   name: String,
@@ -35,8 +35,8 @@ const saveNewPerson = (name, number) => {
 
 const getAllPersons = () => {
   Person.find({}).then(result => {
-    console.log('phonebook:');
-    result.forEach(({name, number}) => {
+    console.log('phonebook:')
+    result.forEach(({ name, number }) => {
       console.log(`${name} ${number}`)
     })
     mongoose.connection.close()

@@ -23,7 +23,7 @@ app.get('/info', (req, res) => {
         <p>Phonebook has info for ${people.length} people</p>
         <p>${new Date()}</p>
       `
-    );
+    )
   })
 })
 
@@ -38,7 +38,7 @@ app.get('/api/persons/:id', (req, res, next) => {
     if (person) {
       res.json(person.toJSON())
     } else {
-      res.status(404).end() 
+      res.status(404).end()
     }
   }).catch(error => next(error))
 })
@@ -76,7 +76,7 @@ app.put('/api/persons/:id', (req, res, next) => {
 
 app.delete('/api/persons/:id', (req, res, next) => {
   Person.findByIdAndRemove(req.params.id)
-    .then(result => {
+    .then(() => {
       res.status(204).end()
     })
     .catch(error => next(error))
@@ -97,6 +97,7 @@ const errorHandler = (error, request, response, next) => {
 
 app.use(errorHandler)
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
